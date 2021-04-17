@@ -42,6 +42,6 @@
     register: res
     failed_when: false
     with_items:
-    - "parted -ms /dev/sdb -- rm 1"
-    - "wipefs -a /dev/sdb /dev/sdc"
-    - "blockdev --rereadpt --flushbufs /dev/sdb /dev/sdc"
+    - "parted -ms {{ controller.node_disks }} -- rm 1"
+    - "wipefs -a {{ controller.node_disks }} {{ controller.hdfs_disks }}"
+    - "blockdev --rereadpt --flushbufs {{ controller.node_disks }} {{ controller.hdfs_disks }}"
