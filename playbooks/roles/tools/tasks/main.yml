@@ -40,16 +40,16 @@
       mode: "{{ item.mode }}"
       force: yes
     with_items:
-    - url: https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_cli_version }}/bin/linux/amd64/kubectl
+    - url: "{{ tools.kubectl_download_url }}"
       dest: "{{ tools_dir }}/kubectl"
       mode: 755
-    - url: https://my-epicctl.s3-us-west-2.amazonaws.com/epicctl
+    - url: "{{ tools.epicctl_download_url }}"
       dest: "{{ tools_dir }}/epicctl"
       mode: 755
-    - url: https://bluedata-releases.s3.amazonaws.com/kubectl-epic/3.2/162/linux/kubectl-hpecp
-      dest: "{{ tools_dir }}/kubectl-hpecp"
-      mode: 755
-    - url: https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
+    #- url: https://bluedata-releases.s3.amazonaws.com/kubectl-epic/3.2/162/linux/kubectl-hpecp
+    #  dest: "{{ tools_dir }}/kubectl-hpecp"
+    #  mode: 755
+    - url: "{{ tools.jq_download_url }}"
       dest: "{{ tools_dir }}/jq"
       mode: 755
     environment: "{{ env }}"

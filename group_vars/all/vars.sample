@@ -4,6 +4,12 @@ tools_dir: "{{ lookup('env','HOME') }}/tools"                                   
 k8skubeconfig_dir: "{{ lookup('env','HOME') }}/k8skubeconfig"
 kubectl_cli_version: v1.17.5
 
+tools:
+  kubectl_download_url: https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_cli_version }}/bin/linux/amd64/kubectl
+  epicctl_download_url: https://yours3-epicctl.s3-us-west-2.amazonaws.com/epicctl
+  jq_download_url: https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
+
+
 credentials:
   ssh:
     username: root

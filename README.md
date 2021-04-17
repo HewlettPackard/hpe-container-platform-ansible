@@ -28,14 +28,16 @@ This repo hosts the ansible playbooks to deploy and configure HPE Ezmeral Contai
 
 ### Pre-reqs ( tested with )
 - Linux machine with ansible 2.9.x and python3.8.2 ( tested with these versions but might work with other versions too)
+        - use your controller machine as ansible machine to run the playbooks
 - minimun 5 nodes with centos 7.6 or up or RHEL ( not tested on SLES) ( nodes can be VMs or baremetal, see product spec for sizing)
 - Following tools are downloaded by playbooks and placed under /usr/local/bin
         - epicctl
         - kubectl
-        - kubectl-hpecp plugin
         - jq
+
 - HPE ECP bundle ( tested with pulling it from s3 bucket)
-- These playbooks are tested on ECP v5.0
+- These playbooks are tested on ECP v5.0 and testing on 5.3 is in progress
+- Follow product documentation to prepare your nodes with right disks configuration.
 
 ### How to setup your development env
         - Any linux machine line centos 7.6 with ansible 2.9.x and python3 ( tested with 3.8.2)
@@ -46,9 +48,9 @@ This repo hosts the ansible playbooks to deploy and configure HPE Ezmeral Contai
         - then run below command ( note: you may edit site.yml before running playbooks)
 
         
-        >ansible-playbooks -i hosts site.yml
-        or
         >ansible-playbooks -i hosts playbooks/controller.yml
+        or
+        >ansible-playbooks -i hosts site.yml
         
 ### Current staus
 
@@ -68,8 +70,8 @@ If you starting first time, you can start from download-tools.yml
 
 ### Troubleshooting
 Following places can be looked at for the errors
-[1] Too look for logs of epicctl : ~/.epicctl{{name}}
-[2] Too look for platform logs /var/log/bluedata
+[1] Tool look for logs of epicctl : ~/.epicctl{{name}}
+[2] Tool look for platform logs /var/log/bluedata
 
 If you are hitting this[1] k8s broken link issue, please run [2] before you start creatig  k8s cluster
 [1]https://github.com/kubernetes/kubernetes/issues/92242
