@@ -16,16 +16,12 @@
 ---
   - include_tasks: template_to_json.yml
     when: provision is defined
+
   - include_tasks: pool.yml
     when: provision is defined
+
   - include_tasks: create_cluster.yml
     when: provision is defined
-
-  # - include_tasks: add-node.yml
-  #   when: addnode is defined
-
-  # - include_tasks: delete-node.yml
-  #   when: deletenode is defined
   
   - include_tasks: delete_cluster.yml
     when: decommission is defined
